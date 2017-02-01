@@ -1,3 +1,15 @@
+import numpy as np
+
+def batch_generator(train_data, batch_size):
+    # train_data consists in the tuple (X,y)
+    # In this function, we read X and y from the memory.
+    # To read from disk, we would use something like :
+    # pandas.read_csv('large_dataset.csv', iterator=True, chunksize=batch_size)
+    i=0
+    while (i+1)*batch_size<X.shape[0]:
+        yield (train_data[0][i*batch_size:(i+1)*batch_size,:], train_data[1][i*batch_size:(i+1)*batch_size])
+        i += 1
+
 def relu(x, deriv=False):
     if deriv:
         return (x>0).astype(float)
